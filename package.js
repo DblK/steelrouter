@@ -10,10 +10,6 @@ Package.describe({
   documentation: 'README.md'
 });
 
-Npm.depends({
-  'body-parser': '1.12.4'
-});
-
 Package.onUse(function(api) {
   api.versionsFrom('3.0');
   api.use('ecmascript');
@@ -32,44 +28,21 @@ Package.onUse(function(api) {
   // for dynamic scoping with environment variables
   api.use('meteor');
 
-  // main namespace and utils
-  // api.use('iron:core@1.0.11');
-  // api.imply('iron:core');
+  // ==================================================
+  // Core
 
-  // ui layout
-  // api.use('iron:layout@1.0.12');
+  // dependencies
+  // api.use('underscore');
+  // api.use('ejson'); // for cloning
 
-  // connect like middleware stack for client/server
-  // api.use('iron:middleware-stack@1.1.0');
-
-  // client and server side url utilities and compiling
-  // api.use('iron:url@1.1.0');
-
-  // for reactive urls and pushState in the browser
-  // api.use('iron:location@1.0.11');
-
-  // for RouteController which inherits from this
-  // api.use('iron:controller@1.0.12');
-
-  api.add_files('lib/base/current_options.js');
-  api.add_files('lib/base/http_methods.js');
-  api.add_files('lib/base/route_controller.js');
-  api.add_files('lib/base/route_controller_server.js', 'server');
-  api.add_files('lib/base/route_controller_client.js', 'client');
-  api.add_files('lib/base/route.js');
-  api.add_files('lib/base/router.js');
-  api.add_files('lib/base/hooks.js');
-  api.add_files('lib/base/helpers.js');
-  api.add_files('lib/base/router_client.js', 'client');
-  api.add_files('lib/base/body_parser_server.js', 'server');
-  api.add_files('lib/base/router_server.js', 'server');
-  api.add_files('lib/base/plugins.js');
-  api.add_files('lib/base/global_router.js');
-  api.add_files('lib/base/templates.html');
+  api.addFiles('lib/1_core/version_conflict_error.js');
+  api.addFiles('lib/1_core/iron_core.js');
 
   // symbol exports
-  api.export('Router');
-  api.export('RouteController');
+  api.export('Iron');
+
+  // ==================================================
+  // Router (aka base)
 
   // ==================================================
   // Layout
@@ -80,40 +53,8 @@ Package.onUse(function(api) {
   // api.use('underscore');
   api.use('tracker'); // for Deps
 
-  // api.use('iron:core@1.0.11');
-  // api.imply('iron:core');
-
   // dynamic templates
-  // api.use('iron:dynamic-template@1.0.12');
-
-  // if you use iron-layout you should get iron-dynamic-template for free!
-  // api.imply('iron:dynamic-template');
-
-  // error messages to remove old packages
-  api.use('cmather:blaze-layout@0.2.5', {weak: true});
-  api.use('cmather:iron-layout@0.2.0', {weak: true});
-
-  api.add_files('lib/layout/version_conflict_errors.js');
-  api.add_files('lib/layout/default_layout.html');
-  api.add_files('lib/layout/layout.js');
-
-  // ==================================================
-  // Core
-
-  // dependencies
-  // api.use('underscore');
-  // api.use('ejson'); // for cloning
-
-  // remove migrated version
-  api.use('cmather:iron-core@0.2.0', {weak: true});
-
-  api.add_files('lib/core/version_conflict_error.js');
-  api.add_files('lib/core/iron_core.js');
-
-  // symbol exports
-  api.export('Iron');
-
-  // ==================================================
+    // ==================================================
   // Dynamic Template
   // api.use('blaze');
   // api.use('underscore');
@@ -124,57 +65,53 @@ Package.onUse(function(api) {
   // api.use('templating');
   api.use('random');
 
-  // api.use('iron:core@1.0.11');
-  // api.imply('iron:core');
+  api.addFiles('lib/6_dynamic-template/version_conflict_error.js');
+  api.addFiles('lib/6_dynamic-template/dynamic_template.html');
+  api.addFiles('lib/6_dynamic-template/dynamic_template.js');
+  api.addFiles('lib/6_dynamic-template/blaze_overrides.js');
 
-  api.add_files('lib/dynamic-template/version_conflict_error.js');
-  api.add_files('lib/dynamic-template/dynamic_template.html');
-  api.add_files('lib/dynamic-template/dynamic_template.js');
-  api.add_files('lib/dynamic-template/blaze_overrides.js');
+  api.addFiles('lib/2_layout/version_conflict_errors.js');
+  api.addFiles('lib/2_layout/default_layout.html');
+  api.addFiles('lib/2_layout/layout.js');
 
+  // connect like middleware stack for client/server
   // ==================================================
   // Middleware Stack
   // api.use('underscore');
   // api.use('ejson');
 
-  // api.use('iron:core@1.0.11');
-  // api.imply('iron:core');
 
-  // api.use('iron:url@1.0.11');
-
-  api.add_files('lib/middleware-stack/handler.js');
-  api.add_files('lib/middleware-stack/middleware_stack.js');
-  api.export('Handler', {testOnly: true});
-
-  // ==================================================
+    // ==================================================
   // Url
   // api.use('underscore');
 
-  // api.use('iron:core@1.0.11');
-  // api.imply('iron:core');
 
-  api.add_files('lib/url/compiler.js');
-  api.add_files('lib/url/url.js');
+  api.addFiles('lib/3_url/compiler.js');
+  api.addFiles('lib/3_url/url.js');
 
+
+  api.addFiles('lib/4_middleware-stack/handler.js');
+  api.addFiles('lib/4_middleware-stack/middleware_stack.js');
+  api.export('Handler', {testOnly: true});
+
+  // client and server side url utilities and compiling
+
+  // for reactive urls and pushState in the browser
   // ==================================================
   // Location
   // api.use('underscore');
   // api.use('tracker');
   // api.use('jquery');
 
-  // api.use('iron:core@1.0.11');
-  // api.imply('iron:core');
-
-  // api.use('iron:url@1.0.11');
-
   api.use('appcache', {weak: true});
 
-  api.add_files('lib/location/utils.js', 'client');
-  api.add_files('lib/location/state.js', 'client');
-  api.add_files('lib/location/location.js', 'client');
+  api.addFiles('lib/5_location/utils.js', 'client');
+  api.addFiles('lib/5_location/state.js', 'client');
+  api.addFiles('lib/5_location/location.js', 'client');
 
   api.export(['urlToHashStyle', 'urlFromHashStyle'], 'client', {testOnly: true});
 
+  // for RouteController which inherits from this
   // ==================================================
   // Controller
   // api.use('underscore');
@@ -182,21 +119,50 @@ Package.onUse(function(api) {
   api.use('reactive-dict'); // reactive state variables
   // api.use('templating');
 
-  // api.use('iron:core@1.0.11');
-  // api.imply('iron:core');
 
-  // api.use('iron:layout@1.0.12');
-  // api.use('iron:dynamic-template@1.0.12');
 
-  api.add_files('lib/controller/wait_list.js', 'client');
-  api.add_files('lib/controller/controller.js');
-  api.add_files('lib/controller/controller_server.js', 'server');
-  api.add_files('lib/controller/controller_client.js', 'client');
+
+  api.addFiles('lib/7_controller/wait_list.js', 'client');
+  api.addFiles('lib/7_controller/controller.js');
+  api.addFiles('lib/7_controller/controller_server.js', 'server');
+  api.addFiles('lib/7_controller/controller_client.js', 'client');
+
+  api.addFiles('lib/8_base/current_options.js');
+  api.addFiles('lib/8_base/http_methods.js');
+  api.addFiles('lib/8_base/route_controller.js');
+  api.addFiles('lib/8_base/route_controller_server.js', 'server');
+  api.addFiles('lib/8_base/route_controller_client.js', 'client');
+  api.addFiles('lib/8_base/route.js');
+  api.addFiles('lib/8_base/router.js');
+  api.addFiles('lib/8_base/hooks.js');
+  api.addFiles('lib/8_base/helpers.js');
+  api.addFiles('lib/8_base/router_client.js', 'client');
+  api.addFiles('lib/8_base/body_parser_server.js', 'server');
+  api.addFiles('lib/8_base/router_server.js', 'server');
+  api.addFiles('lib/8_base/plugins.js');
+  api.addFiles('lib/8_base/global_router.js');
+  api.addFiles('lib/8_base/templates.html');
+
+  // symbol exports
+  api.export('Router');
+  api.export('RouteController');
+
+
+
+
+
+
+
+
 });
 
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use('tinytest');
-  api.use('dblk:steelrouter');
+  api.use('dblk:steel-router');
   api.mainModule('steelrouter-tests.js');
+});
+
+Npm.depends({
+  'body-parser': '1.12.4'
 });
