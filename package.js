@@ -13,7 +13,6 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('3.0');
   api.use('ecmascript');
-  // api.mainModule('steelrouter.js');
 
   // meteor dependencies
   api.use('underscore');
@@ -31,10 +30,6 @@ Package.onUse(function(api) {
   // ==================================================
   // Core
 
-  // dependencies
-  // api.use('underscore');
-  // api.use('ejson'); // for cloning
-
   api.addFiles('lib/1_core/version_conflict_error.js');
   api.addFiles('lib/1_core/iron_core.js');
 
@@ -46,23 +41,16 @@ Package.onUse(function(api) {
 
   // ==================================================
   // Layout
-  // api.use('templating');
   api.use('blaze');
 
   // some utils
-  // api.use('underscore');
   api.use('tracker'); // for Deps
 
   // dynamic templates
     // ==================================================
   // Dynamic Template
-  // api.use('blaze');
-  // api.use('underscore');
-  // api.use('ui');
   api.use('jquery');
-  // api.use('tracker');
   api.use('reactive-var');
-  // api.use('templating');
   api.use('random');
 
   api.addFiles('lib/6_dynamic-template/version_conflict_error.js');
@@ -77,13 +65,10 @@ Package.onUse(function(api) {
   // connect like middleware stack for client/server
   // ==================================================
   // Middleware Stack
-  // api.use('underscore');
-  // api.use('ejson');
 
 
-    // ==================================================
+  // ==================================================
   // Url
-  // api.use('underscore');
 
 
   api.addFiles('lib/3_url/compiler.js');
@@ -99,9 +84,6 @@ Package.onUse(function(api) {
   // for reactive urls and pushState in the browser
   // ==================================================
   // Location
-  // api.use('underscore');
-  // api.use('tracker');
-  // api.use('jquery');
 
   api.use('appcache', {weak: true});
 
@@ -114,10 +96,7 @@ Package.onUse(function(api) {
   // for RouteController which inherits from this
   // ==================================================
   // Controller
-  // api.use('underscore');
-  // api.use('tracker'); // reactivity
   api.use('reactive-dict'); // reactive state variables
-  // api.use('templating');
 
 
 
@@ -164,5 +143,5 @@ Package.onTest(function(api) {
 });
 
 Npm.depends({
-  'body-parser': '1.12.4'
+  'body-parser': '1.20.2'
 });
