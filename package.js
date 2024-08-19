@@ -1,6 +1,6 @@
 Package.describe({
   name: 'dblk:steel-router',
-  version: '0.0.1',
+  version: '0.0.2',
   // Brief, one-line summary of the package.
   summary: 'Iron router enforced for MeteorJS 3!',
   // URL to the Git repository containing the source code for this package.
@@ -49,7 +49,7 @@ Package.onUse(function(api) {
   // dynamic templates
     // ==================================================
   // Dynamic Template
-  api.use('jquery@1.0.3');
+  api.use('jquery@1.11.9');
   api.use('reactive-var');
   api.use('random');
 
