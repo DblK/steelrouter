@@ -11,15 +11,15 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('3.0');
+  api.versionsFrom('3.0.1');
   api.use('ecmascript');
 
   // meteor dependencies
   api.use('underscore');
   api.use('webapp', 'server');
-  api.use('deps', 'client');
-  api.use('ui');
-  api.use('templating');
+  api.use('deps@1.0.0', 'client'); // Deprecated
+  api.use('ui@2.0.0');
+  api.use('templating@1.4.4');
 
   // for cloning
   api.use('ejson');
@@ -41,7 +41,7 @@ Package.onUse(function(api) {
 
   // ==================================================
   // Layout
-  api.use('blaze');
+  api.use('blaze@3.0.0');
 
   // some utils
   api.use('tracker'); // for Deps
@@ -49,7 +49,7 @@ Package.onUse(function(api) {
   // dynamic templates
     // ==================================================
   // Dynamic Template
-  api.use('jquery');
+  api.use('jquery@1.0.3');
   api.use('reactive-var');
   api.use('random');
 
@@ -85,7 +85,7 @@ Package.onUse(function(api) {
   // ==================================================
   // Location
 
-  api.use('appcache', {weak: true});
+  api.use('appcache@1.2.9-beta300.7', {weak: true}); // Deprecated
 
   api.addFiles('lib/5_location/utils.js', 'client');
   api.addFiles('lib/5_location/state.js', 'client');
