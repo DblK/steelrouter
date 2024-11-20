@@ -1,17 +1,17 @@
 Package.describe({
   name: 'dblk:steel-router',
-  version: '0.0.6',
+  version: '0.0.7',
   // Brief, one-line summary of the package.
   summary: 'Iron router enforced for MeteorJS 3!',
   // URL to the Git repository containing the source code for this package.
-  git: '',
+  git: 'https://github.com/DblK/steelrouter',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('3.0.1');
+  api.versionsFrom('3.0.2');
   api.use('ecmascript');
 
   // meteor dependencies
@@ -41,7 +41,7 @@ Package.onUse(function(api) {
 
   // ==================================================
   // Layout
-  api.use('blaze@3.0.0');
+  api.use('blaze@3.0.1');
 
   // some utils
   api.use('tracker'); // for Deps
